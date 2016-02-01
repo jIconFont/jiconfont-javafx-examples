@@ -3,7 +3,8 @@ package jiconfont.javafx.demo;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jiconfont.fontawesome.FontAwesome;
+import jiconfont.icons.FontAwesome;
+import jiconfont.icons.GoogleMaterialDesignIcons;
 import jiconfont.javafx.CatalogPaneFX;
 import jiconfont.javafx.IconBuilderFX;
 
@@ -34,6 +35,9 @@ public class ShowCatalogFX extends Application {
   public void start(Stage stage) {
     CatalogPaneFX catalogPaneFX = new CatalogPaneFX();
     for (FontAwesome icon : FontAwesome.values()) {
+      catalogPaneFX.register(icon);
+    }
+    for (GoogleMaterialDesignIcons icon : GoogleMaterialDesignIcons.values()) {
       catalogPaneFX.register(icon);
     }
     catalogPaneFX.update();
