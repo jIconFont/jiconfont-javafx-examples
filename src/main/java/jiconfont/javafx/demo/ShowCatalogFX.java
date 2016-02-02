@@ -5,8 +5,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import jiconfont.icons.FontAwesome;
 import jiconfont.icons.GoogleMaterialDesignIcons;
-import jiconfont.javafx.CatalogPaneFX;
-import jiconfont.javafx.IconBuilderFX;
+import jiconfont.icons.Iconic;
+import jiconfont.icons.MFGLabs;
+import jiconfont.javafx.CatalogPane;
 
 /**
  * Copyright (c) 2016 jIconFont <BR>
@@ -31,26 +32,30 @@ import jiconfont.javafx.IconBuilderFX;
  */
 public class ShowCatalogFX extends Application {
 
-  @Override
-  public void start(Stage stage) {
-    CatalogPaneFX catalogPaneFX = new CatalogPaneFX();
-    for (FontAwesome icon : FontAwesome.values()) {
-      catalogPaneFX.register(icon);
+    @Override
+    public void start(Stage stage) {
+        CatalogPane catalogPane = new CatalogPane();
+        for (FontAwesome icon : FontAwesome.values()) {
+            catalogPane.register(icon);
+        }
+        for (GoogleMaterialDesignIcons icon : GoogleMaterialDesignIcons.values()) {
+            catalogPane.register(icon);
+        }
+        for (Iconic icon : Iconic.values()) {
+            catalogPane.register(icon);
+        }
+        for (MFGLabs icon : MFGLabs.values()) {
+            catalogPane.register(icon);
+        }
+        catalogPane.update();
+        Scene scene = new Scene(catalogPane, 950, 650);
+        stage.setTitle("jIconFont - JavaFX - Catalog");
+        stage.setScene(scene);
+        stage.show();
+        stage.centerOnScreen();
     }
-    for (GoogleMaterialDesignIcons icon : GoogleMaterialDesignIcons.values()) {
-      catalogPaneFX.register(icon);
+
+    public static void main(String[] args) {
+        launch(args);
     }
-    catalogPaneFX.update();
-    Scene scene = new Scene(catalogPaneFX, 950, 650);
-    stage.setTitle("jIconFont - JavaFX - Catalog");
-    stage.setScene(scene);
-    stage.show();
-    stage.centerOnScreen();
-
-    IconBuilderFX.newIcon(FontAwesome.ALIGN_CENTER).buildImage();
-  }
-
-  public static void main(String[] args) {
-    launch(args);
-  }
 }
