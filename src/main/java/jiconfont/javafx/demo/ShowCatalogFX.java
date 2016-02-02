@@ -3,10 +3,10 @@ package jiconfont.javafx.demo;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import jiconfont.icons.Elusive;
 import jiconfont.icons.FontAwesome;
 import jiconfont.icons.GoogleMaterialDesignIcons;
 import jiconfont.icons.Iconic;
-import jiconfont.icons.MFGLabs;
 import jiconfont.javafx.CatalogPane;
 
 /**
@@ -44,7 +44,7 @@ public class ShowCatalogFX extends Application {
         for (Iconic icon : Iconic.values()) {
             catalogPane.register(icon);
         }
-        for (MFGLabs icon : MFGLabs.values()) {
+        for (Elusive icon : Elusive.values()) {
             catalogPane.register(icon);
         }
         catalogPane.update();
