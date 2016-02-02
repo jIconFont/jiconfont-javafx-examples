@@ -3,10 +3,7 @@ package jiconfont.javafx.demo;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jiconfont.icons.Elusive;
-import jiconfont.icons.FontAwesome;
-import jiconfont.icons.GoogleMaterialDesignIcons;
-import jiconfont.icons.Iconic;
+import jiconfont.icons.*;
 import jiconfont.javafx.CatalogPane;
 
 /**
@@ -45,6 +42,9 @@ public class ShowCatalogFX extends Application {
             catalogPane.register(icon);
         }
         for (Elusive icon : Elusive.values()) {
+            catalogPane.register(icon);
+        }
+        for (Entypo icon : Entypo.values()) {
             catalogPane.register(icon);
         }
         catalogPane.update();
