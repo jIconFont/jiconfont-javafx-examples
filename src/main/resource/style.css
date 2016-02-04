@@ -1,0 +1,12 @@
+
+.myClass{
+-fx-icon-size: 48px;
+-fx-icon-code: "FontAwesome:F25B";
+-fx-fill: gray;
+}
+
+.test2{
+-fx-icon-size: 48px;
+-fx-icon-code: "Entypo:E70C";
+-fx-fill: red;
+}
