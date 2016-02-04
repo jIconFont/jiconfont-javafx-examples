@@ -3,12 +3,20 @@ package jiconfont.javafx.demo;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
 import jiconfont.icons.FontAwesome;
 import jiconfont.javafx.IconFontFX;
-import jiconfont.javafx.IconNode;
 
 /**
  * Copyright (c) 2016 jIconFont <BR>
@@ -31,7 +39,7 @@ import jiconfont.javafx.IconNode;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public class Example1 extends Application {
+public class Example9 extends Application {
 
     @Override
     public void start(Stage stage) {
@@ -47,12 +55,16 @@ public class Example1 extends Application {
         // Register the IconFont
         IconFontFX.register(FontAwesome.getIconFont());
 
-        IconNode iconNode = new IconNode(FontAwesome.SMILE_O);
-        iconNode.setIconSize(40);
-        iconNode.setFill(Color.DARKGREEN);
+        Stop[] stops = new Stop[]{new Stop(0, Color.YELLOW), new Stop(1, Color.RED)};
+        LinearGradient fill = new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE, stops);
+        Color stroke = Color.BLACK;
+        Image image = IconFontFX.buildImage(FontAwesome.SMILE_O, 80, fill, stroke);
 
-        iconPane.getChildren().add(iconNode);
-        StackPane.setMargin(iconNode, new Insets(5, 10, 5, 10));
+        Label label = new Label();
+        label.setGraphic(new ImageView(image));
+
+        iconPane.getChildren().add(label);
+        StackPane.setMargin(label, new Insets(5, 10, 5, 10));
         root.getChildren().add(iconPane);
         Scene scene = new Scene(root, 300, 300);
         stage.setTitle("jIconFont - JavaFX - Catalog");

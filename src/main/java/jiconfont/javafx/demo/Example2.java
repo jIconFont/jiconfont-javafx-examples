@@ -42,13 +42,12 @@ public class Example2 extends Application {
         iconPane.setMaxWidth(Region.USE_PREF_SIZE);
         iconPane.setMaxHeight(Region.USE_PREF_SIZE);
         iconPane.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
-        iconPane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.DASHED, null, null)));
 
         // Register the IconFont
         IconFontFX.register(FontAwesome.getIconFont());
 
         IconNode iconNode = new IconNode(FontAwesome.SMILE_O);
-        iconNode.setIconSize(15);
+        iconNode.setIconSize(18);
 
         Label label = new Label("Hello!");
         label.setGraphic(iconNode);
