@@ -9,12 +9,12 @@
     </properties>
 
     <groupId>com.github.jiconfont</groupId>
-    <artifactId>jiconfont-javafx-demo</artifactId>
+    <artifactId>jiconfont-javafx-examples</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>jIconFont - JavaFX - Demo</name>
-    <description>jIconFont JavaFX Demo
+    <name>jIconFont - JavaFX - Examples</name>
+    <description>jIconFont JavaFX Examples
     </description>
     <url>https://github.com/jIconFont/jiconfont-javafx-demo</url>
 
