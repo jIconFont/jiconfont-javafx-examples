@@ -1,11 +1,10 @@
-package jiconfont.javafx.demo;
+package jiconfont.examples.javafx;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import jiconfont.icons.FontAwesome;
@@ -33,24 +32,29 @@ import jiconfont.javafx.IconNode;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public class Example3 extends Application {
+public class Example2 extends Application {
 
     @Override
     public void start(Stage stage) {
         StackPane root = new StackPane();
         root.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+        StackPane iconPane = new StackPane();
+        iconPane.setMaxWidth(Region.USE_PREF_SIZE);
+        iconPane.setMaxHeight(Region.USE_PREF_SIZE);
+        iconPane.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 
         // Register the IconFont
         IconFontFX.register(FontAwesome.getIconFont());
 
-        IconNode iconNode = new IconNode(FontAwesome.FLOPPY_O);
-        iconNode.setIconSize(15);
-        iconNode.setFill(Color.BLACK);
+        IconNode iconNode = new IconNode(FontAwesome.SMILE_O);
+        iconNode.setIconSize(18);
 
-        Button button = new Button();
-        button.setGraphic(iconNode);
+        Label label = new Label("Hello!");
+        label.setGraphic(iconNode);
 
-        root.getChildren().add(button);
+        iconPane.getChildren().add(label);
+        StackPane.setMargin(label, new Insets(5, 10, 5, 10));
+        root.getChildren().add(iconPane);
         Scene scene = new Scene(root, 300, 300);
         stage.setTitle("jIconFont - JavaFX - Catalog");
         stage.setScene(scene);

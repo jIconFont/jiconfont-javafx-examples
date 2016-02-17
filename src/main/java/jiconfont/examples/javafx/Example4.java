@@ -1,18 +1,16 @@
-package jiconfont.javafx.demo;
+package jiconfont.examples.javafx;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import jiconfont.DefaultIconCode;
-import jiconfont.IconFont;
+import jiconfont.icons.FontAwesome;
 import jiconfont.javafx.IconFontFX;
 import jiconfont.javafx.IconNode;
-
-import java.io.InputStream;
 
 /**
  * Copyright (c) 2016 jIconFont <BR>
@@ -35,38 +33,29 @@ import java.io.InputStream;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public class Example7 extends Application {
+public class Example4 extends Application {
 
     @Override
     public void start(Stage stage) {
         StackPane root = new StackPane();
         root.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 
-        // Register my custom IconFont
-        IconFontFX.register(new IconFont() {
-            @Override
-            public String getFontFamily() {
-                return "Entypo";
-            }
+        // Register the IconFont
+        IconFontFX.register(FontAwesome.getIconFont());
 
-            @Override
-            public InputStream getFontInputStream() {
-                return Example7.class.getResourceAsStream("/entypo.ttf");
-            }
-        });
+        IconNode iconNode = new IconNode(FontAwesome.FLOPPY_O);
+        iconNode.setIconSize(15);
+        iconNode.setFill(Color.BLACK);
 
-        IconNode iconNode = new IconNode();
-        iconNode.setIconCode(new DefaultIconCode("Entypo", '\uE70C'));
+        Button button = new Button("Save");
+        button.setGraphic(iconNode);
 
-        root.getChildren().add(iconNode);
+        root.getChildren().add(button);
         Scene scene = new Scene(root, 300, 300);
-        scene.getStylesheets().add("style.css");
         stage.setTitle("jIconFont - JavaFX - Catalog");
         stage.setScene(scene);
         stage.show();
         stage.centerOnScreen();
-
-
     }
 
     public static void main(String[] args) {

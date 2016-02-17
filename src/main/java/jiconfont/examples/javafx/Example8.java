@@ -1,4 +1,4 @@
-package jiconfont.javafx.demo;
+package jiconfont.examples.javafx;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

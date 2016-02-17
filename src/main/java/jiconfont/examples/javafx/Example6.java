@@ -1,18 +1,15 @@
-package jiconfont.javafx.demo;
+package jiconfont.examples.javafx;
 
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import jiconfont.icons.Elusive;
 import jiconfont.icons.FontAwesome;
 import jiconfont.javafx.IconFontFX;
 import jiconfont.javafx.IconNode;
-import jiconfont.javafx.StackedIconNode;
 
 /**
  * Copyright (c) 2016 jIconFont <BR>
@@ -35,35 +32,28 @@ import jiconfont.javafx.StackedIconNode;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public class Example5 extends Application {
+public class Example6 extends Application {
 
     @Override
     public void start(Stage stage) {
         StackPane root = new StackPane();
         root.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 
-        // Register the IconFonts
+        // Register the IconFont
         IconFontFX.register(FontAwesome.getIconFont());
-        IconFontFX.register(Elusive.getIconFont());
 
-        IconNode iconNode1 = new IconNode(FontAwesome.DATABASE);
-        iconNode1.setIconSize(26);
-        iconNode1.setFill(Color.BLACK);
+        IconNode iconNode = new IconNode();
+        iconNode.getStyleClass().add("myClass");
 
-        IconNode iconNode2 = new IconNode(Elusive.REMOVE);
-        iconNode2.setIconSize(14);
-        iconNode2.setFill(Color.RED);
-        iconNode2.setStroke(Color.WHITE);
-
-        StackedIconNode stackedIconNode = new StackedIconNode(iconNode1);
-        stackedIconNode.add(Pos.BOTTOM_LEFT, iconNode2);
-
-        root.getChildren().add(stackedIconNode);
+        root.getChildren().add(iconNode);
         Scene scene = new Scene(root, 300, 300);
+        scene.getStylesheets().add("style.css");
         stage.setTitle("jIconFont - JavaFX - Catalog");
         stage.setScene(scene);
         stage.show();
         stage.centerOnScreen();
+
+
     }
 
     public static void main(String[] args) {

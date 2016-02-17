@@ -1,15 +1,18 @@
-package jiconfont.javafx.demo;
+package jiconfont.examples.javafx;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import jiconfont.icons.FontAwesome;
+import jiconfont.DefaultIconCode;
+import jiconfont.IconFont;
 import jiconfont.javafx.IconFontFX;
 import jiconfont.javafx.IconNode;
+
+import java.io.InputStream;
 
 /**
  * Copyright (c) 2016 jIconFont <BR>
@@ -32,34 +35,38 @@ import jiconfont.javafx.IconNode;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public class Example2 extends Application {
+public class Example7 extends Application {
 
     @Override
     public void start(Stage stage) {
         StackPane root = new StackPane();
         root.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
-        StackPane iconPane = new StackPane();
-        iconPane.setMaxWidth(Region.USE_PREF_SIZE);
-        iconPane.setMaxHeight(Region.USE_PREF_SIZE);
-        iconPane.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 
-        // Register the IconFont
-        IconFontFX.register(FontAwesome.getIconFont());
+        // Register my custom IconFont
+        IconFontFX.register(new IconFont() {
+            @Override
+            public String getFontFamily() {
+                return "Entypo";
+            }
 
-        IconNode iconNode = new IconNode(FontAwesome.SMILE_O);
-        iconNode.setIconSize(18);
+            @Override
+            public InputStream getFontInputStream() {
+                return Example7.class.getResourceAsStream("/entypo.ttf");
+            }
+        });
 
-        Label label = new Label("Hello!");
-        label.setGraphic(iconNode);
+        IconNode iconNode = new IconNode();
+        iconNode.setIconCode(new DefaultIconCode("Entypo", '\uE70C'));
 
-        iconPane.getChildren().add(label);
-        StackPane.setMargin(label, new Insets(5, 10, 5, 10));
-        root.getChildren().add(iconPane);
+        root.getChildren().add(iconNode);
         Scene scene = new Scene(root, 300, 300);
+        scene.getStylesheets().add("style.css");
         stage.setTitle("jIconFont - JavaFX - Catalog");
         stage.setScene(scene);
         stage.show();
         stage.centerOnScreen();
+
+
     }
 
     public static void main(String[] args) {

@@ -1,16 +1,22 @@
-package jiconfont.javafx.demo;
+package jiconfont.examples.javafx;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
 import jiconfont.icons.FontAwesome;
 import jiconfont.javafx.IconFontFX;
-import jiconfont.javafx.IconNode;
 
 /**
  * Copyright (c) 2016 jIconFont <BR>
@@ -33,24 +39,33 @@ import jiconfont.javafx.IconNode;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public class Example4 extends Application {
+public class Example9 extends Application {
 
     @Override
     public void start(Stage stage) {
+
+
         StackPane root = new StackPane();
         root.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+        StackPane iconPane = new StackPane();
+        iconPane.setMaxWidth(Region.USE_PREF_SIZE);
+        iconPane.setMaxHeight(Region.USE_PREF_SIZE);
+        iconPane.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 
         // Register the IconFont
         IconFontFX.register(FontAwesome.getIconFont());
 
-        IconNode iconNode = new IconNode(FontAwesome.FLOPPY_O);
-        iconNode.setIconSize(15);
-        iconNode.setFill(Color.BLACK);
+        Stop[] stops = new Stop[]{new Stop(0, Color.YELLOW), new Stop(1, Color.RED)};
+        LinearGradient fill = new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE, stops);
+        Color stroke = Color.BLACK;
+        Image image = IconFontFX.buildImage(FontAwesome.SMILE_O, 80, fill, stroke);
 
-        Button button = new Button("Save");
-        button.setGraphic(iconNode);
+        Label label = new Label();
+        label.setGraphic(new ImageView(image));
 
-        root.getChildren().add(button);
+        iconPane.getChildren().add(label);
+        StackPane.setMargin(label, new Insets(5, 10, 5, 10));
+        root.getChildren().add(iconPane);
         Scene scene = new Scene(root, 300, 300);
         stage.setTitle("jIconFont - JavaFX - Catalog");
         stage.setScene(scene);
