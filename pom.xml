@@ -58,17 +58,12 @@
         <dependency>
             <groupId>com.github.jiconfont</groupId>
             <artifactId>jiconfont-javafx</artifactId>
-            <version>0.10.0</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.jiconfont</groupId>
-            <artifactId>jiconfont-font_awesome</artifactId>
-            <version>4.5.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.jiconfont</groupId>
-            <artifactId>jiconfont-elusive</artifactId>
-            <version>2.0.1</version>
+            <artifactId>jiconfont-bundle</artifactId>
+            <version>1.2.1</version>
         </dependency>
     </dependencies>
 
