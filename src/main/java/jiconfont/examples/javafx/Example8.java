@@ -1,5 +1,6 @@
 package jiconfont.examples.javafx;
 
+import java.io.InputStream;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Background;
@@ -10,8 +11,6 @@ import javafx.stage.Stage;
 import jiconfont.IconFont;
 import jiconfont.javafx.IconFontFX;
 import jiconfont.javafx.IconNode;
-
-import java.io.InputStream;
 
 /**
  * Copyright (c) 2016 jIconFont <BR>
